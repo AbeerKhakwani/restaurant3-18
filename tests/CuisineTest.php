@@ -7,10 +7,16 @@
 
     require_once "src/Cuisine.php";
 
-    // $DB = new PDO('pgsql:host=localhost;dbname=to_do_test');
+     $DB = new PDO('pgsql:host=localhost;dbname=restaurant');
 
     class CuisineTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+          Cuisine::deleteAll();
+        }
+
+
         function test_getType()
         {
             //Arrange
@@ -71,6 +77,26 @@
         }
 
 
-        
+        function test_save(){
+            //Arrange
+            $type = "Italian";
+            $id = null;
+            $test_cuisine = new Cuisine($type, $id);
+
+            //Act
+
+            $test_cuisine->save();
+            var_dump($test_cuisine);
+            $result = Cuisine::getAll();
+
+
+
+
+            $this->assertEquals($test_cuisine, $result[0]);
+
+
+
+
+        }
     }
 ?>

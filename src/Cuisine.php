@@ -33,14 +33,33 @@ class Cuisine
 
      function save()
     {
-        $statement= $GLOBAL['DB']->query("INSERT INTO  cuisine (type) VALUES ('{$this->getType()}')RETURNING id; ");
+        $statement= $GLOBALS['DB']->query("INSERT INTO  cuisine (type) VALUES ('{$this->getType()}')RETURNING id; ");
 
         $result=$statement->fetch(PDO::FETCH_ASSOC);
         $this->setId($result['id']);
 
     }
-    
+    static function getAll(){
+        $returned_cuisine= $GLOBALS['DB']->query("SELECT * FROM cuisine;");
 
+        $cuisines=array();
+
+        foreach($returned_cuisine as $cuisine){
+
+            $id=$cuisine['id'];
+            $type=$cuisine['type'];
+            $new_cuisine= new Cuisine ($type,$id);
+            array_push ($cuisines,$new_cuisine);
+
+        }
+
+        return $cuisines;
+    }
+
+    static function deleteAll()
+    {
+        $GLOBALS['DB']->exec("DELETE FROM cuisine *;");
+    }
 
 
 
