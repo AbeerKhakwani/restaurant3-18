@@ -30,5 +30,7 @@ class Cuisine
     {
         return $this->id;
     }
+
+
 }
 ?>
