@@ -6,7 +6,7 @@
 
 
         <h1> Welcome to all types of Cuisine</h1>
-        <p> Create a new Restaurant</p>
+        <p> What kind of food are you craving?</p>
 
         <form action="/cuisines" method = "post">
             <label for="type"> Cuisine type: </label>
@@ -30,5 +30,9 @@
         </ul>
 
         {% endif %}
+
+        <form action="/delete_cuisines" method="post">
+            <button type="submit">Delete Cuisines</button>
+        </form>
     </body>
 </html>

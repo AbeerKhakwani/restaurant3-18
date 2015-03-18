@@ -66,9 +66,9 @@ class Cuisine
         $found_cuisine = null;
         $cuisines = Cuisine::getAll();
         foreach($cuisines as $food) {
-            $cuisine_id = $current_cuisine->getId();
+            $cuisine_id = $food->getId();
             if ($cuisine_id == $search_id) {
-                $found_cuisine = $current_cuisine;
+                $found_cuisine = $food;
             }
             return $found_cuisine;
         }

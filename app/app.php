@@ -19,7 +19,7 @@
 });
 
 
-    $app->POST("/cuisines", function() use ($app) {
+    $app->post("/cuisines", function() use ($app) {
         $new_cuisine=new Cuisine($_POST['type']);
         $new_cuisine->save();
     return $app['twig']->render('index.twig', array('cuisine' => Cuisine::getAll()));
@@ -27,6 +27,17 @@
 
 
 
-return $app
+    $app->get("/cuisine/{id}", function($id) use ($app) {
+        $cuisine = Cuisine::find($id);
+        return $app['twig']->render('cuisine.twig', array('cuisine' => $cuisine));
+    });
+
+    $app->post("/delete_cuisines", function() use ($app) {
+        Cuisine::deleteAll();
+        return $app['twig']->render('index.twig', array('cuisine' => Cuisine::getAll()));
+    });
+
+
+return $app;
 
 ?>
