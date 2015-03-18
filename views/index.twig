@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Cuisine</title>
+    </head>
+    <body>
+
+
+        <h1> Welcome to all types of Cuisine</h1>
+        <p> Create a new Restaurant</p>
+
+        <form action="/cuisines" method = "post">
+            <label for="type"> Cuisine type: </label>
+            <input id="type" name="type" type="text">
+
+            <button type="Submit"> Add Cuisine</button>
+        </form>
+
+        {% if cuisine is not empty %}
+
+        <p>Here all the cuisines</p>
+
+        <ul>
+
+                {% for food in cuisine %}
+                <li><a href="/cuisine/{{ food.getId }}">{{ food.getType }}</li>
+
+                {% endfor %}
+
+
+        </ul>
+
+        {% endif %}
+    </body>
+</html>
