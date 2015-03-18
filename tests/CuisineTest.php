@@ -40,5 +40,37 @@
             $this->assertEquals("American", $result);
 
         }
+
+        function test_getId()
+        {
+            //Arrange
+            $type = "Italian";
+            $id = 1;
+            $test_id = new Cuisine($type, $id);
+
+            //Act
+            $result = $test_id->getId();
+
+            //Assert
+            $this->assertEquals(1, $result);
+        }
+
+        function test_setId()
+        {
+            //Arrange
+            $type = "Italian";
+            $id = null;
+            $test_id = new Cuisine($type, $id);
+
+            //Act
+            $test_id->setId(1);
+
+            //Assert
+            $result = $test_id->getId();
+            $this->assertEquals(1, $result);
+        }
+
+
+        
     }
 ?>

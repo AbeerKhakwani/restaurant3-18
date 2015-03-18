@@ -31,6 +31,18 @@ class Cuisine
         return $this->id;
     }
 
+     function save()
+    {
+        $statement= $GLOBAL['DB']->query("INSERT INTO  cuisine (type) VALUES ('{$this->getType()}')RETURNING id; ");
+
+        $result=$statement->fetch(PDO::FETCH_ASSOC);
+        $this->setId($result['id']);
+
+    }
+    
+
+
+
 
 }
 ?>
