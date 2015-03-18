@@ -4,9 +4,30 @@
         <title>Cuisine</title>
     </head>
     <body>
-        <h1>{{ cuisine.getType }}</h1>
+        <p>
+            hey
+        </p>
+
+            <h1>{{ cuisines.getType }}</h1>
 
 
-        </form>
+
+            <form action="/restaurants" method = "post">
+                <input id="cuisine_id" name="cuisine_id" type="hidden" value="{{ cuisines.getId() }}">
+                <label for="name"> Restaurant Name: </label>
+                <input id="name" name="name" type="text">
+
+
+                <label for="address"> Restaurant Address: </label>
+                <input id="address" name="address" type="text">
+
+
+                <button type="Submit"> Add Cuisine</button>
+            </form>
+
+
+        <p>
+            <a href="/">Home</a>
+        </p>
     </body>
 </html>
